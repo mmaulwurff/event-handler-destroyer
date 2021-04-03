@@ -13,3 +13,5 @@ Alias ehd_destroy "ehd_event_handler_name %1\"\"; wait 1; test %1 ehd_summon ehd
 
 Alias ehd_summon "summon ehd_Destroyer"
 Alias ehd_usage "echo Usage: ehd_destroy <event handler name>"
+
+Alias ehd_list "summon ehd_Lister"

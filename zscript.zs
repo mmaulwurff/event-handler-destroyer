@@ -41,3 +41,59 @@ class ehd_Destroyer : Actor
   }
 
 } // class ehd_Destroyer
+
+class ehd_Lister : Actor
+{
+
+  override void beginPlay()
+  {
+    listEventHandlers();
+    destroy();
+  }
+
+// private: ////////////////////////////////////////////////////////////////////////////////////////
+
+  private static void listEventHandlers()
+  {
+    Array<string> eventHandlers;
+
+    uint nClasses = AllClasses.size();
+    for (uint i = 0; i < nClasses; ++i)
+    {
+      class aClass = AllClasses[i];
+
+      if (  aClass is "StaticEventHandler"
+         && aClass != "StaticEventHandler"
+         && aClass != "EventHandler"
+         )
+      {
+        eventHandlers.push(aClass.getClassName());
+      }
+    }
+
+    Console.printf("Event handlers: %s", join(eventHandlers, ", "));
+  }
+
+  private static clearscope string join(Array<string> strings, string delimiter)
+  {
+    string result;
+
+    uint nStrings = strings.size();
+    for (uint i = 0; i < nStrings; ++i)
+    {
+      if (strings[i].length() == 0) continue;
+
+      if (result.length() == 0)
+      {
+        result = strings[i];
+      }
+      else
+      {
+        result.appendFormat("%s%s", delimiter, strings[i]);
+      }
+    }
+
+    return result;
+  }
+
+} // class ehd_Lister
