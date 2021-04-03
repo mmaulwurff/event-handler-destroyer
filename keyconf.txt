@@ -1,0 +1,15 @@
+// Hacks!
+//
+// 1. %1\"\" - we need to have a value here even if %1 (argument) is absent. So,
+// concatenate it with empty string.
+//
+// 2. wait command is needed because otherwise the following commands won't see
+// updated CVar value.
+//
+// 3. test with three arguments. If arument tested value %1 is absent, the next
+// statement is tested, and it's false. Print usage instructions in this case.
+
+Alias ehd_destroy "ehd_event_handler_name %1\"\"; wait 1; test %1 ehd_summon ehd_summon ehd_usage"
+
+Alias ehd_summon "summon ehd_Destroyer"
+Alias ehd_usage "echo Usage: ehd_destroy <event handler name>"
